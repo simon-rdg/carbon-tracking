@@ -19,9 +19,10 @@ const App = () => {
       <BrowserRouter>
         <div>
           <NavBar />
+
           <Route path="/" exact component={LandingPage} />
           <Route path="/eingaben" component={Eingaben} />
-          <Route path="/eingaben/formular" component={Formular} />
+          <Route path="/formular" component={Formular} />
           <Route path="/eingaben/nachbearbeitung" component={Nachbearbeitung} />
           <Route
             path="/informationen"
