@@ -1,0 +1,66 @@
+import React from "react";
+import JSON_Auth from "../JSON_Auth";
+
+import { Link } from "react-router-dom";
+
+import SvgMain from "../iconComponents/Main";
+
+const NavBar = () => {
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div>
+        <SvgMain />
+      </div>
+      <div className="container-fluid">
+        <Link className="navbar-brand" to="/">
+          Carbon-Tracker
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <Link
+                className="nav-link active"
+                aria-current="page"
+                to="/informationen"
+              >
+                Informationen
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="nav-link active"
+                aria-current="page"
+                to="/eingaben"
+              >
+                Eingaben
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="nav-link active"
+                aria-current="page"
+                to="/statistik"
+              >
+                Statistik
+              </Link>
+            </li>
+          </ul>
+          <JSON_Auth />
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default NavBar;

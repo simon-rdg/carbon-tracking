@@ -1,0 +1,96 @@
+/* This source code is exported from pxCode, you can get more document from https://www.pxcode.io */
+@import "utils";
+
+$font_type0: 96px/1.2 "Roboto", Helvetica, Arial, serif;
+
+.section1_layout {
+  position: relative;
+  height: min-content;
+}
+.section1 {
+  @include flex-column;
+}
+.block1 {
+  @include flex-column;
+  background-color: rgb(255, 255, 255);
+}
+.block1_layout {
+  position: relative;
+  height: min-content;
+  margin: 10px 20px 50px;
+  @include lg {
+    margin: 9px 18px 43px;
+  }
+  @include md {
+    margin: 7px 15px 35px;
+  }
+  @include sm {
+    margin: 6px 13px 28px;
+  }
+  @include xs {
+    margin: 6px 11px 24px;
+  }
+  @include xxs {
+    margin: 5px 10px 21px;
+  }
+  @include tn {
+    margin: 5px 10px 19px;
+  }
+}
+.hero_title {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type0;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  letter-spacing: 0px;
+  @include lg {
+    font-size: 83px;
+    text-align: center;
+  }
+  @include md {
+    font-size: 70px;
+  }
+  @include sm {
+    font-size: 58px;
+  }
+  @include xs {
+    font-size: 52px;
+  }
+  @include xxs {
+    font-size: 46px;
+  }
+  @include tn {
+    font-size: 42px;
+  }
+}
+.hero_title_layout {
+  position: relative;
+  height: min-content;
+  width: 57.92%;
+  margin: 36.5px auto 0px;
+  @include lg {
+    width: 64.73%;
+    margin: 32px auto 0px;
+  }
+  @include md {
+    width: 70.99%;
+    margin: 26px auto 0px;
+  }
+  @include sm {
+    width: 76.53%;
+    margin: 22px auto 0px;
+  }
+  @include xs {
+    width: 81.3%;
+    margin: 20px auto 0px;
+  }
+  @include xxs {
+    width: 85.29%;
+    margin: 18px auto 0px;
+  }
+  @include tn {
+    width: 88.55%;
+    margin: 16px auto 0px;
+  }
+}
