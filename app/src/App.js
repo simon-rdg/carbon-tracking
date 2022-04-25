@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 
 import Eingaben from "./components/Eingaben/Eingaben";
 import Formular from "./components/Eingaben/Formular";
+import DetailFormular from "components/Eingaben/DetailFormular";
 import Nachbearbeitung from "./components/Eingaben/Nachbearbeitung";
 
 import Informationsuebersicht from "./components/Informationen/InformationsUebersicht";
@@ -19,10 +20,10 @@ const App = () => {
       <BrowserRouter>
         <div>
           <NavBar />
-
           <Route path="/" exact component={LandingPage} />
           <Route path="/eingaben" component={Eingaben} />
           <Route path="/formular" component={Formular} />
+          <Route path="/detailformular" component={DetailFormular} />;
           <Route path="/eingaben/nachbearbeitung" component={Nachbearbeitung} />
           <Route
             path="/informationen"

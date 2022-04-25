@@ -1,6 +1,5 @@
-/* This source code is exported from pxCode, you can get more document from https://www.pxcode.io */
+/*This source code is exported from pxCode, you can get more document from https://www.pxcode.io */
 
-/*
 import React from "react";
 import cn from "classnames";
 
@@ -105,4 +104,3 @@ export default function Informationsseite(props) {
 }
 
 Informationsseite.inStorybook = true;
- */

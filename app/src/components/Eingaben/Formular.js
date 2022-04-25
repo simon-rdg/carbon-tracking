@@ -3,6 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { addEntry } from "../../actions";
 import DetailFormular from "./DetailFormular";
+import { Link } from "react-router-dom";
 
 class Formular extends React.Component {
   renderCurrentDay() {
@@ -29,8 +30,10 @@ class Formular extends React.Component {
         <input
           {...input}
           className="form-control"
-          id="floatingInput validationCustomUsername"
+          id="floatingInput validationCustomUsername validationCustom01"
+          required
         />
+        <div className="invalid-feedback">Das Feld darf nicht leer sein.</div>
         <label className="floatingInput">{label}</label>
       </div>
     );
@@ -53,10 +56,15 @@ class Formular extends React.Component {
           type="checkbox"
           {...input}
           id="flexCheckDefault"
+          required
         />
         <label className="form-check-label">{label}</label>
       </div>
     );
+  }
+
+  renderOverlay() {
+    return <Link to="/detailformular"></Link>;
   }
 
   renderDate() {
@@ -74,8 +82,11 @@ class Formular extends React.Component {
       <div className="container">
         <h1 className="display-1">Tägliche Eingabe</h1>
 
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-          <div className="container">
+        <form
+          className="row g-3 needs-validation"
+          onSubmit={this.props.handleSubmit(this.onSubmit)}
+        >
+          <div className="col-md-4">
             <h3 className="display-6">Allgemeines</h3>
             <Field
               name="title"
@@ -92,6 +103,7 @@ class Formular extends React.Component {
           <div className="container">
             <h3 className="display-6">Mobilität</h3>
             <Field
+              onChange={this.renderOverlay}
               name="checkBicycle"
               component={this.renderCheckbox}
               label="Ich bin heute Fahrrad gefahren."

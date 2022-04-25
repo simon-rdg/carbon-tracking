@@ -1,8 +1,12 @@
 import React from "react";
-// import Informationsseite from "./InformationenPoweredByFigma";
+import Informationsseite from "./InformationenPoweredByFigma";
 
 const Informationsuebersicht = () => {
-  return <div>Hier werden in Kürze Informationen stehen.</div>;
+  return (
+    <div>
+      <Informationsseite />
+    </div>
+  );
 };
 
 export default Informationsuebersicht;
