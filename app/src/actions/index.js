@@ -1,4 +1,4 @@
-import users from "../apis/carbon";
+import users from "../apis/GlobalFootprintNetwork"; //http://localhost:3001/users
 
 import { SIGN_IN, SIGN_OUT, ADD_ENTRY } from "./types";
 

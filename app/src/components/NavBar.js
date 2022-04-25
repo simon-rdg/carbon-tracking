@@ -1,65 +1,115 @@
-import React from "react";
-import JSON_Auth from "../JSON_Auth";
-
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import SvgMain from "../iconComponents/Main";
+import LoginIcon from "@mui/icons-material/Login";
+import LogoutIcon from "@mui/icons-material/Logout";
 
-const NavBar = () => {
+import Button from "@material-ui/core/Button";
+
+const NavBar = ({ logoutUser, setLogoutUser }) => {
+  const [login, setLogin] = useState("");
+
+  useEffect(() => {
+    hydrateStateWithLocalStorage();
+  }, [logoutUser]);
+
+  const logout = () => {
+    localStorage.removeItem("login");
+    setLogoutUser(true);
+  };
+
+  const hydrateStateWithLocalStorage = () => {
+    if (localStorage.hasOwnProperty("login")) {
+      let value = localStorage.getItem("login");
+      try {
+        value = JSON.parse(value);
+        setLogin(value);
+      } catch (e) {
+        setLogin("");
+      }
+    }
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div>
-        <SvgMain />
-      </div>
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          Carbon-Tracker
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link
-                className="nav-link active"
-                aria-current="page"
-                to="/informationen"
-              >
-                Informationen
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="nav-link active"
-                aria-current="page"
-                to="/eingaben"
-              >
-                Eingaben
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="nav-link active"
-                aria-current="page"
-                to="/statistik"
-              >
-                Statistik
-              </Link>
-            </li>
-          </ul>
-          <JSON_Auth />
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div>
+          <SvgMain />
         </div>
-      </div>
-    </nav>
+        <div className="container-fluid">
+          <Link className="navbar-brand" to="/">
+            Carbon-Tracker
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/informationen"
+                >
+                  Informationen
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/eingaben"
+                >
+                  Eingaben
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/statistik"
+                >
+                  Statistik
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <header style={{ marginTop: "20px" }}>
+            {!logoutUser && login && login.userLogin ? (
+              <Button
+                style={{ width: "100px" }}
+                variant="outlined"
+                endIcon={<LogoutIcon color="secondary" />}
+                color="palette.primary.light"
+                onClick={logout}
+              >
+                Logout
+              </Button>
+            ) : (
+              <Link to="/login">
+                <Button
+                  style={{ width: "100px" }}
+                  variant="contained"
+                  startIcon={<LoginIcon color="secondary" />}
+                  color="palette.primary.light"
+                >
+                  Login
+                </Button>
+              </Link>
+            )}
+          </header>
+        </div>
+      </nav>
+    </div>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Begruessung = () => {
   const today = new Date();
@@ -13,9 +14,31 @@ const Begruessung = () => {
 };
 
 const LandingPage = () => {
+  const isLoginTrue = JSON.parse(localStorage.getItem("login"));
+
+  const userNotLogin = () => (
+    <>
+      <h2>Du bist leider noch nicht angemeldet.</h2>
+      <h3>
+        Wenn Du einen Account hast, dann melde dich bitte{" "}
+        <Link to="/login">hier</Link> an.
+      </h3>
+      <h3>
+        Falls Du noch keinen Account hast, dann registriere dich bitte{" "}
+        <Link to="/register">hier</Link>.
+      </h3>
+    </>
+  );
+
   return (
     <div>
-      <Begruessung />
+      <div style={{ marginTop: "100px" }}>
+        {isLoginTrue && isLoginTrue.userLogin ? (
+          <Begruessung />
+        ) : (
+          <>{userNotLogin()}</>
+        )}
+      </div>
     </div>
   );
 };
