@@ -64,7 +64,7 @@ class Formular extends React.Component {
   }
 
   renderOverlay() {
-    return <Link to="/detailformular"></Link>;
+    return;
   }
 
   renderDate() {

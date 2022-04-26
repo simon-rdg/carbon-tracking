@@ -34,7 +34,10 @@ const LandingPage = () => {
     <div>
       <div style={{ marginTop: "100px" }}>
         {isLoginTrue && isLoginTrue.userLogin ? (
-          <Begruessung />
+          <div>
+            <Begruessung />
+            Du bist erfolgreich angemeldet!
+          </div>
         ) : (
           <>{userNotLogin()}</>
         )}

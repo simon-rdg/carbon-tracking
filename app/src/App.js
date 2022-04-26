@@ -6,6 +6,7 @@ import Eingaben from "./components/Eingaben/Eingaben";
 import Formular from "./components/Eingaben/Formular";
 import DetailFormular from "components/Eingaben/DetailFormular";
 import Nachbearbeitung from "./components/Eingaben/Nachbearbeitung";
+import VergangeneEingaben from "./components/Eingaben/VergangeneEingaben";
 
 import Informationsuebersicht from "./components/Informationen/InformationsUebersicht";
 
@@ -43,6 +44,11 @@ function App() {
           <Route path="/formular" component={Formular}>
             <NavBar logoutUser={logoutUser} setLogoutUser={setLogoutUser} />
             <Formular />
+          </Route>
+
+          <Route path="/vergangeneeingaben" component={VergangeneEingaben}>
+            <NavBar logoutUser={logoutUser} setLogoutUser={setLogoutUser} />
+            <VergangeneEingaben />
           </Route>
 
           <Route path="/detailformular" component={DetailFormular}>
