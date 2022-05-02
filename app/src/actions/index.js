@@ -1,20 +1,9 @@
-// import users from "../apis/GlobalFootprintNetwork"; //http://localhost:3001/users
+/*import users from "http://localhost:3002";
 
-import { SIGN_IN, SIGN_OUT, ADD_ENTRY } from "./types";
-
-export const signIn = async (dispatch) => {
-  const response = await users.post("/register");
-
-  dispatch({ type: SIGN_IN, payload: response.data });
-};
-
-export const signOut = () => {
-  return {
-    type: SIGN_OUT,
-  };
-};
+import { ADD_ENTRY } from "./types";
 
 export const addEntry = (formValues) => async (dispatch) => {
-  users.post("/users", formValues);
-  // dispatch({ type: ADD_ENTRY, payload: response.data });
+  const response = await users.post("/users", formValues);
+  dispatch({ type: ADD_ENTRY });
 };
+*/

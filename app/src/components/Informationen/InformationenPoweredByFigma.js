@@ -35,10 +35,7 @@ function renderSection2(props) {
       <div className={cn(section2Styles.flex, section2Styles.flex_layout)}>
         <div
           style={{
-            "--src": `url(${
-              require("../../resources/c9f2f3c11ce1cf422f8328666d7e5ee3.png")
-                .default
-            })`,
+            "--src": `url(${require("../../resources/c9f2f3c11ce1cf422f8328666d7e5ee3.png")})`,
           }}
           className={cn(section2Styles.image, section2Styles.image_layout)}
         />

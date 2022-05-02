@@ -60,7 +60,7 @@ const NavBar = ({ logoutUser, setLogoutUser }) => {
                   aria-current="page"
                   to="/informationen"
                 >
-                  Informationen
+                  <Button>Informationen</Button>
                 </Link>
               </li>
               <li>
@@ -69,7 +69,7 @@ const NavBar = ({ logoutUser, setLogoutUser }) => {
                   aria-current="page"
                   to="/eingaben"
                 >
-                  Eingaben
+                  <Button>Eingaben</Button>
                 </Link>
               </li>
               <li>
@@ -78,7 +78,7 @@ const NavBar = ({ logoutUser, setLogoutUser }) => {
                   aria-current="page"
                   to="/statistik"
                 >
-                  Statistik
+                  <Button>Statistik</Button>
                 </Link>
               </li>
             </ul>
@@ -86,23 +86,23 @@ const NavBar = ({ logoutUser, setLogoutUser }) => {
           <header style={{ marginTop: "20px" }}>
             {!logoutUser && login && login.userLogin ? (
               <Button
-                style={{ width: "100px" }}
-                variant="outlined"
-                endIcon={<LogoutIcon color="secondary" />}
-                color="palette.primary.light"
+                style={{ width: "150px" }}
+                variant="contained"
+                endIcon={<LogoutIcon color="primary" />}
+                color="default"
                 onClick={logout}
               >
-                Logout
+                Abmelden
               </Button>
             ) : (
-              <Link to="/login">
+              <Link to="/login" style={{ textDecoration: "none" }}>
                 <Button
-                  style={{ width: "100px" }}
+                  style={{ width: "150px" }}
                   variant="contained"
-                  startIcon={<LoginIcon color="secondary" />}
-                  color="palette.primary.light"
+                  startIcon={<LoginIcon color="primary" />}
+                  color="default"
                 >
-                  Login
+                  Anmelden
                 </Button>
               </Link>
             )}

@@ -1,3 +1,4 @@
+import tagesschau from "apis/tagesschau";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -13,30 +14,48 @@ const Begruessung = () => {
   }
 };
 
+const Tagesschau = async () => {
+  // const response = await tagesschau.get(
+  //   "/search/?searchText=klimawandel&pageSize=5"
+  // );
+  // console.log(response);
+
+  return (
+    <div>
+      <h3>aktuelle Informationen zum Thema Klimawandel: </h3>
+      <br></br>
+    </div>
+  );
+};
+
 const LandingPage = () => {
   const isLoginTrue = JSON.parse(localStorage.getItem("login"));
 
   const userNotLogin = () => (
     <>
-      <h2>Du bist leider noch nicht angemeldet.</h2>
-      <h3>
-        Wenn Du einen Account hast, dann melde dich bitte{" "}
-        <Link to="/login">hier</Link> an.
-      </h3>
-      <h3>
-        Falls Du noch keinen Account hast, dann registriere dich bitte{" "}
-        <Link to="/register">hier</Link>.
-      </h3>
+      <div className="alert alert-warning" role="alert">
+        Du bist leider noch nicht angemeldet:{" "}
+        <Link className="alert-link" to="login">
+          Hier anmelden
+        </Link>{" "}
+        oder{" "}
+        <Link className="alert-link" to="register">
+          jetzt registrieren
+        </Link>
+        .
+      </div>
     </>
   );
 
   return (
     <div>
-      <div style={{ marginTop: "100px" }}>
+      <div>
         {isLoginTrue && isLoginTrue.userLogin ? (
           <div>
+            <div className="alert alert-success" role="alert">
+              Du bist erfolgreich angemeldet!
+            </div>
             <Begruessung />
-            Du bist erfolgreich angemeldet!
           </div>
         ) : (
           <>{userNotLogin()}</>

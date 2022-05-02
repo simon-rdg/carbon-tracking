@@ -3,9 +3,19 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { addEntry } from "../../actions";
 import DetailFormular from "./DetailFormular";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class Formular extends React.Component {
+  firstEntry() {
+    if (JSON.parse(localStorage.getItem("entriesExist"))) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   renderCurrentDay() {
     const today = new Date();
     return (
@@ -56,7 +66,6 @@ class Formular extends React.Component {
           type="checkbox"
           {...input}
           id="flexCheckDefault"
-          required
         />
         <label className="form-check-label">{label}</label>
       </div>
@@ -74,7 +83,39 @@ class Formular extends React.Component {
   }
 
   onSubmit = (formValues) => {
-    this.props.addEntry(formValues);
+    // this.props.addEntry(formValues);
+
+    if (this.firstEntry()) {
+      localStorage.setItem(
+        "eintraege",
+        JSON.stringify({
+          entries: [{ eintrag_1: formValues }],
+        })
+      );
+      localStorage.setItem(
+        "entriesExist",
+        JSON.stringify({
+          entriesExist: true,
+        })
+      );
+    } else {
+      const tmpEntries = JSON.parse(localStorage.getItem("eintraege") || "[]");
+
+      const id = `eintrag_${tmpEntries.entries.length + 1}`;
+
+      tmpEntries.entries.push({ [id]: formValues });
+
+      localStorage.removeItem("eintraege");
+
+      const entries = tmpEntries.entries;
+
+      localStorage.setItem(
+        "eintraege",
+        JSON.stringify({
+          entries,
+        })
+      );
+    }
   };
 
   render() {
