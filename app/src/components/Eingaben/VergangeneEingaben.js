@@ -7,9 +7,9 @@ class VergangeneEingaben extends React.Component {
     const tmpEntries = JSON.parse(localStorage.getItem("eintraege") || "[]");
     let output;
 
-    // for (let i = 0; i < tmpEntries.entries.length; i++) {
-    //   output += this.createAccordionItem(i);
-    // }
+    for (let i = 0; i < tmpEntries.entries.length; i++) {
+      output += this.createAccordionItem(i);
+    }
 
     return output;
   }
