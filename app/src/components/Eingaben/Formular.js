@@ -89,7 +89,7 @@ class Formular extends React.Component {
       localStorage.setItem(
         "eintraege",
         JSON.stringify({
-          entries: [{ eintrag_1: formValues }],
+          entries: [{ realEintrag: formValues }],
         })
       );
       localStorage.setItem(
@@ -101,7 +101,7 @@ class Formular extends React.Component {
     } else {
       const tmpEntries = JSON.parse(localStorage.getItem("eintraege") || "[]");
 
-      const id = `eintrag_${tmpEntries.entries.length + 1}`;
+      const id = "realEintrag"; // `eintrag_${tmpEntries.entries.length + 1}`
 
       tmpEntries.entries.push({ [id]: formValues });
 
