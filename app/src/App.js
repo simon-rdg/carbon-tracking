@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Eingaben from "./components/Eingaben/Eingaben";
 import Formular from "./components/Eingaben/Formular";
-import DetailFormular from "components/Eingaben/DetailFormular";
+
 import Nachbearbeitung from "./components/Eingaben/Nachbearbeitung";
 import VergangeneEingaben from "./components/Eingaben/VergangeneEingaben";
 
@@ -49,11 +49,6 @@ function App() {
           <Route path="/vergangeneeingaben" component={VergangeneEingaben}>
             <NavBar logoutUser={logoutUser} setLogoutUser={setLogoutUser} />
             <VergangeneEingaben />
-          </Route>
-
-          <Route path="/detailformular" component={DetailFormular}>
-            <NavBar logoutUser={logoutUser} setLogoutUser={setLogoutUser} />
-            <DetailFormular />
           </Route>
 
           <Route path="/eingaben/nachbearbeitung" component={Nachbearbeitung}>

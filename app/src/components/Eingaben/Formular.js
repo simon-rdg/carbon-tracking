@@ -2,12 +2,18 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { addEntry } from "../../actions";
-import DetailFormular from "./DetailFormular";
+
 import { Link, Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
 import { Redirect } from "react-router-dom";
+import { StoreMallDirectoryTwoTone } from "@mui/icons-material";
 
 class Formular extends React.Component {
+  state = {
+    eingaben: JSON.parse(localStorage.getItem("eintraege") || "[]"),
+    done: false,
+  };
+
   firstEntry() {
     if (JSON.parse(localStorage.getItem("entriesExist"))) {
       return false;
@@ -17,14 +23,8 @@ class Formular extends React.Component {
   }
 
   renderCurrentDay() {
-    const today = new Date();
-    return (
-      "Titel: z.B. 'Meine Eingabe vom " +
-      today.getDate() +
-      "." +
-      today.getMonth() +
-      ".'"
-    );
+    // Refactoring bitte
+    return "Titel:";
   }
 
   renderCurrentDaySmall() {
@@ -55,10 +55,14 @@ class Formular extends React.Component {
   }
 
   renderDateInput({ input, label, meta }) {
+    const today = new Date();
+
     return (
       <div className="form-floating">
         <input {...input} className="form-control" id="floatingInput" />
-        <label className="floatingInput">Datum: [JJJJ-MM-TT]</label>
+        <label className="floatingInput">
+          {today.getDate()}.{today.getMonth() + 1}.{today.getFullYear()}
+        </label>
       </div>
     );
   }
@@ -221,6 +225,7 @@ class Formular extends React.Component {
   }
 
   renderOverlay() {
+    //wird nicht gebraucht ?
     return;
   }
 
@@ -231,13 +236,22 @@ class Formular extends React.Component {
   }
 
   onSubmit = (formValues) => {
-    // this.props.addEntry(formValues);
+    // Codesample 1 (?)
+
+    const datum = new Date();
+    const today =
+      "" +
+      datum.getDate() +
+      "." +
+      (datum.getMonth() + 1) +
+      "." +
+      datum.getFullYear();
 
     if (this.firstEntry()) {
       localStorage.setItem(
         "eintraege",
         JSON.stringify({
-          entries: [{ realEintrag: formValues }],
+          entries: [{ realEintrag: formValues, date: today }],
           streak: [1, this.renderCurrentDaySmall()],
         })
       );
@@ -250,9 +264,16 @@ class Formular extends React.Component {
     } else {
       const tmpEntries = JSON.parse(localStorage.getItem("eintraege") || "[]");
 
-      const id = "realEintrag"; // `eintrag_${tmpEntries.entries.length + 1}`
+      const z = tmpEntries.entries.length;
 
-      tmpEntries.entries.push({ [id]: formValues });
+      if (tmpEntries.entries[z - 1].date === today) {
+        window.alert("Es kann nur ein Eintrag pro Tag verfasst werden.");
+        this.setState({ done: true });
+
+        return;
+      }
+
+      tmpEntries.entries.push({ realEintrag: formValues, date: today });
       let streak = [tmpEntries.streak[0], tmpEntries.streak[1]];
 
       const isStreak = this.checkStreak(streak[1]);
@@ -277,11 +298,47 @@ class Formular extends React.Component {
         })
       );
     }
+    this.setState({ done: true });
+    window.alert("Dein Formular wurde gespeichert.");
   };
 
+  renderAlreadyDoneMessage() {
+    const tmpEntries = JSON.parse(localStorage.getItem("eintraege") || "[]");
+    const datum = new Date();
+    const today =
+      "" +
+      datum.getDate() +
+      "." +
+      (datum.getMonth() + 1) +
+      "." +
+      datum.getFullYear();
+
+    if (tmpEntries.length !== 0) {
+      const z = tmpEntries.entries.length;
+
+      if (tmpEntries.entries[z - 1].date === today) {
+        return (
+          <div className="alert alert-warning" role="alert">
+            Du hast heute schon einen Eintrag getätigt.
+          </div>
+        );
+      }
+    }
+  }
+
+  redirectDone() {
+    if (this.state.done === true) {
+      return <Redirect to="eingaben" />;
+    }
+  }
+
   render() {
+    const today = new Date();
+
     return (
       <div className="container">
+        {this.renderAlreadyDoneMessage()}
+
         <h1 className="display-1">Tägliche Eingabe</h1>
 
         <form
@@ -300,7 +357,11 @@ class Formular extends React.Component {
               component={this.renderInput}
               label="Beschreibung:"
             />
-            <Field name="date" component={this.renderDateInput} />
+            <h6>
+              {" "}
+              Meine Eingabe vom {today.getDate()}.{today.getMonth() + 1}.
+              {today.getFullYear()}
+            </h6>
           </div>
           <div className="container">
             <h3 className="display-6">Mobilität</h3>
@@ -359,6 +420,7 @@ class Formular extends React.Component {
           </div>
           <button className="btn btn-primary">Abschicken</button>
         </form>
+        {this.redirectDone()}
       </div>
     );
   }

@@ -32,6 +32,7 @@ const NavBar = ({ logoutUser, setLogoutUser }) => {
   };
 
   return (
+    // CSS Benennung überprüfen
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div>

@@ -22,8 +22,6 @@ class StatistikUebersicht extends React.Component {
   renderNumberCheckboxes() {
     let checkBoxes = [0, 0, 0, 0, 0, 0, 0, 0, 0]; // [bicycle, publicTraffic, Car, Flight, Meat, Milk, Pommes, Schoki, Konsum]
 
-    console.log(this.state);
-
     for (let i = 0; i < checkBoxes.length; i++) {
       checkBoxes[i] = this.helpRenderCheckboxes(i);
     }
@@ -130,13 +128,37 @@ class StatistikUebersicht extends React.Component {
     return numberHits;
   }
 
+  renderStreak() {
+    const streak = this.state.eingaben.streak[0];
+    return <div>Dein Streak liegt bei {streak} Einträgen.</div>;
+  }
+
   render() {
-    return (
-      <div>
-        <div>{this.renderOverallStats()}</div>
-        <div>{this.renderNumberCheckboxes()}</div>
-      </div>
-    );
+    const isLoginTrue = JSON.parse(localStorage.getItem("login"));
+
+    if (isLoginTrue) {
+      if (this.state.eingaben.length === 0) {
+        return (
+          <div>
+            Leider gibt es noch keine Daten, die ausgewertet werden können.
+          </div>
+        );
+      } else {
+        return (
+          <div>
+            <div>{this.renderOverallStats()}</div>
+            <div>{this.renderNumberCheckboxes()}</div>
+            <div>{this.renderStreak()}</div>
+          </div>
+        );
+      }
+    } else {
+      return (
+        <div className="alert alert-warning" role="alert">
+          Bitte melde Dich an, um diese Seite nutzen zu können.
+        </div>
+      );
+    }
   }
 }
 

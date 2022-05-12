@@ -25,7 +25,11 @@ const Eingaben = () => {
         </div>
       );
     } else {
-      return <div>Bitte melde dich an, um diese Seite nutzen zu können.</div>;
+      return (
+        <div className="alert alert-warning" role="alert">
+          Bitte melde Dich an, um diese Seite nutzen zu können.
+        </div>
+      );
     }
   };
 
