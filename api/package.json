@@ -10,13 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fs": "^0.0.1-security",
-    "json-server-auth": "^2.1.0",
-    "nodemon": "^2.0.15"
+    "fs": "0.0.1-security",
+    "json-server-auth": "2.1.0",
+    "nodemon": "2.0.15"
   },
   "devDependencies": {
-    "body-parser": "^1.20.0",
-    "json-server": "^0.17.0",
-    "jsonwebtoken": "^8.5.1"
+    "body-parser": "1.20.0",
+    "json-server": "0.17.0",
+    "jsonwebtoken": "8.5.1"
   }
 }

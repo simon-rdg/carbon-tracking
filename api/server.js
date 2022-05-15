@@ -84,5 +84,5 @@ server.post("/api/auth/login", (req, res) => {
 });
 
 server.listen(3002, () => {
-  console.log("JSON Server läuft :)");
+  console.log("JSON Server läuft");
 });
