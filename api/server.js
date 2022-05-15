@@ -1,3 +1,5 @@
+// Dieser Code wurde von https://github.com/trickjsprogram/react-jwt-auth übernommen und leicht modifiziert.
+
 const fs = require("fs");
 const bodyParser = require("body-parser");
 const jsonServer = require("json-server");

@@ -1,1 +1,3 @@
-{"users":[{"id":2,"email":"test@gmail.com","password":"123456"},{"id":3,"email":"sdf","password":"123"},{"id":4,"email":"simon","password":"simon"},{"id":5,"email":"biggi","password":"sisa"},{"id":6,"email":"sr3578","password":"sr3578"}]}
+{
+  "users": [{ "id": 1, "email": "test@mso.com", "password": "Milch" }]
+}

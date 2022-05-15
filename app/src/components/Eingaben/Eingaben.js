@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import EingabenBackground from "../../resources/EingabenBackground.png"; // Bild von Unsplash
 
 const Eingaben = () => {
   const isLoginTrue = JSON.parse(localStorage.getItem("login"));
@@ -7,21 +8,42 @@ const Eingaben = () => {
   const renderIfLogin = () => {
     if (isLoginTrue) {
       return (
-        <div>
-          Hier kannst Du deine Eingaben sehen und neue Eingaben tätigen.
+        <div className="container-fluid" style={{ marginBottom: "20px" }}>
+          <h4 className="display-6">
+            Hier kannst Du deine Eingaben sehen und neue Eingaben tätigen.
+          </h4>
+
           <br></br>
-          Fülle jetzt Dein heutiges Formular aus.
-          <br></br>
-          <button>
-            <Link to="/formular">Formular</Link>
+
+          <button
+            type="button"
+            style={{ marginRight: "25px", marginBottom: "20px" }}
+            className="btn btn-primary"
+          >
+            <Link type="button" className="btn btn-primary" to="/formular">
+              Formular
+            </Link>
           </button>
-          <br></br>
-          Hier kannst du Deine Eingaben aus der Vergangenheit sehen und ggf.
-          bearbeiten.
-          <br></br>
-          <button>
-            <Link to="/vergangeneeingaben">alte Eingaben</Link>
+
+          <button
+            type="button"
+            style={{ marginBottom: "20px" }}
+            className="btn btn-primary"
+          >
+            <Link
+              type="button"
+              className="btn btn-primary"
+              to="/vergangeneeingaben"
+            >
+              alte Eingaben
+            </Link>
           </button>
+
+          <img
+            src={EingabenBackground}
+            className="img-fluid"
+            alt="designbild"
+          ></img>
         </div>
       );
     } else {

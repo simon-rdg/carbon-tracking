@@ -1,6 +1,6 @@
-import tagesschau from "apis/tagesschau";
 import React from "react";
 import { Link } from "react-router-dom";
+import LandingpageBackground from "../resources/LandingpageBackground.png";
 
 const Begruessung = () => {
   const today = new Date();
@@ -12,20 +12,6 @@ const Begruessung = () => {
   } else if (today.getHours() >= 18) {
     return <h1>Guten Abend!</h1>;
   }
-};
-
-const Tagesschau = async () => {
-  // const response = await tagesschau.get(
-  //   "/search/?searchText=klimawandel&pageSize=5"
-  // );
-  // console.log(response);
-
-  return (
-    <div>
-      <h3>aktuelle Informationen zum Thema Klimawandel: </h3>
-      <br></br>
-    </div>
-  );
 };
 
 const LandingPage = () => {
@@ -48,7 +34,7 @@ const LandingPage = () => {
   );
 
   return (
-    <div>
+    <div className="container-fluid">
       <div>
         {isLoginTrue && isLoginTrue.userLogin ? (
           <div>
@@ -60,6 +46,13 @@ const LandingPage = () => {
         ) : (
           <>{userNotLogin()}</>
         )}
+      </div>
+      <div style={{ marginBottom: "20px" }}>
+        <img
+          src={LandingpageBackground}
+          className="img-fluid"
+          alt="designbild"
+        ></img>
       </div>
     </div>
   );

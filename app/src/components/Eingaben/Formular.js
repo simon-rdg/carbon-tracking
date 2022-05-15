@@ -1,12 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import { addEntry } from "../../actions";
-
-import { Link, Route } from "react-router-dom";
-import { Switch } from "react-router-dom";
 import { Redirect } from "react-router-dom";
-import { StoreMallDirectoryTwoTone } from "@mui/icons-material";
 
 class Formular extends React.Component {
   state = {
@@ -22,52 +17,27 @@ class Formular extends React.Component {
     }
   }
 
-  renderCurrentDay() {
-    // Refactoring bitte
-    return "Titel:";
-  }
-
-  renderCurrentDaySmall() {
+  returnCurrentDaySmall() {
     const today = new Date();
     return [today.getDate(), today.getMonth(), today.getFullYear()];
   }
 
-  renderError({ error, touched }) {
-    if (touched && error) {
-      return <div>Fehler</div>;
-    }
-  }
-
-  renderInput({ input, label, meta }) {
-    const id = `field ${meta.error && meta.touched ? "invalid" : ""}`;
+  renderInput({ input, label }) {
     return (
-      <div className="form-floating input-group has-validation" id={id}>
+      <div className="form-floating input-group">
         <input
           {...input}
           className="form-control"
-          id="floatingInput validationCustomUsername validationCustom01"
+          id="floatingInput"
           required
         />
-        <div className="invalid-feedback">Das Feld darf nicht leer sein.</div>
+
         <label className="floatingInput">{label}</label>
       </div>
     );
   }
 
-  renderDateInput({ input, label, meta }) {
-    const today = new Date();
-
-    return (
-      <div className="form-floating">
-        <input {...input} className="form-control" id="floatingInput" />
-        <label className="floatingInput">
-          {today.getDate()}.{today.getMonth() + 1}.{today.getFullYear()}
-        </label>
-      </div>
-    );
-  }
-
-  renderCheckbox({ input, label, meta }) {
+  renderCheckbox({ input, label }) {
     return (
       <div className="form-check">
         <input
@@ -224,20 +194,7 @@ class Formular extends React.Component {
     }
   }
 
-  renderOverlay() {
-    //wird nicht gebraucht ?
-    return;
-  }
-
-  renderDate() {
-    const today = new Date();
-
-    return today.getFullYear() + "-" + today.getMonth() + "-" + today.getDay();
-  }
-
   onSubmit = (formValues) => {
-    // Codesample 1 (?)
-
     const datum = new Date();
     const today =
       "" +
@@ -252,7 +209,7 @@ class Formular extends React.Component {
         "eintraege",
         JSON.stringify({
           entries: [{ realEintrag: formValues, date: today }],
-          streak: [1, this.renderCurrentDaySmall()],
+          streak: [1, this.returnCurrentDaySmall()],
         })
       );
       localStorage.setItem(
@@ -336,7 +293,7 @@ class Formular extends React.Component {
     const today = new Date();
 
     return (
-      <div className="container">
+      <div className="container" style={{ marginBottom: "20px" }}>
         {this.renderAlreadyDoneMessage()}
 
         <h1 className="display-1">Tägliche Eingabe</h1>
@@ -347,11 +304,7 @@ class Formular extends React.Component {
         >
           <div className="col-md-4">
             <h3 className="display-6">Allgemeines</h3>
-            <Field
-              name="title"
-              component={this.renderInput}
-              label={this.renderCurrentDay()}
-            />
+            <Field name="title" component={this.renderInput} label="Titel:" />
             <Field
               name="description"
               component={this.renderInput}
@@ -426,25 +379,8 @@ class Formular extends React.Component {
   }
 }
 
-const validate = (formValues) => {
-  const errors = {};
-
-  if (!formValues.title) {
-    errors.title = "Bitte gib einen Titel ein.";
-  }
-
-  if (!formValues.description) {
-    errors.description = "Bitte gib eine Beschreibung ein.";
-  }
-
-  if (!formValues.date) {
-    errors.date = "Bitte gib ein Datum ein.";
-  }
-};
-
 const formWrapped = reduxForm({
   form: "dailyForm",
-  validate,
 })(Formular);
 
-export default connect(null, { addEntry })(formWrapped);
+export default connect()(formWrapped);

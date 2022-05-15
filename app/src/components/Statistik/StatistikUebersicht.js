@@ -1,5 +1,3 @@
-import { Output } from "@mui/icons-material";
-import { checkboxClasses } from "@mui/material";
 import React from "react";
 
 class StatistikUebersicht extends React.Component {
@@ -11,8 +9,9 @@ class StatistikUebersicht extends React.Component {
     return (
       <div>
         <div>
-          <h2>
-            Du hast schon {this.state.eingaben.entries.length} Eingaben gemacht.
+          <h2 className="display-6">
+            Du hast schon <strong>{this.state.eingaben.entries.length}</strong>{" "}
+            Eingaben gemacht.
           </h2>
         </div>
       </div>
@@ -20,7 +19,7 @@ class StatistikUebersicht extends React.Component {
   }
 
   renderNumberCheckboxes() {
-    let checkBoxes = [0, 0, 0, 0, 0, 0, 0, 0, 0]; // [bicycle, publicTraffic, Car, Flight, Meat, Milk, Pommes, Schoki, Konsum]
+    let checkBoxes = [0, 0, 0, 0, 0, 0, 0, 0, 0]; // [bicycle, publicTraffic, Car, Flight, Meat, Milk, Fries, Chocolate, Purchase]
 
     for (let i = 0; i < checkBoxes.length; i++) {
       checkBoxes[i] = this.helpRenderCheckboxes(i);
@@ -28,21 +27,43 @@ class StatistikUebersicht extends React.Component {
 
     return (
       <div>
-        <div>
-          Du bist insgesamt {checkBoxes[0]} mal mit dem Fahrrad gefahren.
-        </div>
-        <div>Du bist insgesamt {checkBoxes[1]} mal mit dem ÖPNV gefahren.</div>
-        <div>Du bist insgesamt {checkBoxes[2]} mal mit dem Auto gefahren.</div>
-        <div>
-          Du bist insgesamt {checkBoxes[3]} mal mit dem Flugzeug geflogen.
-        </div>
-        <div>Du hast insgesamt {checkBoxes[4]} mal Fleisch gegessen.</div>
-        <div>
-          Du hast insgesamt {checkBoxes[5]} milchprodukte zu dir genommen.
-        </div>
-        <div>Du hast insgesamt {checkBoxes[6]} mal Pommes gegessen.</div>
-        <div>Du hast insgesamt {checkBoxes[7]} mal Schokolade gegessen.</div>
-        <div>Du warst insgesamt {checkBoxes[8]} mal shoppen.</div>
+        <ul>
+          <li>
+            Insgesamt <strong>{checkBoxes[0]}</strong> mal bist du mit dem
+            Fahrrad gefahren.
+          </li>
+          <li>
+            Insgesamt <strong>{checkBoxes[1]}</strong> mal bist du mit dem ÖPNV
+            gefahren.
+          </li>
+          <li>
+            Insgesamt <strong>{checkBoxes[2]}</strong> mal bist du mit dem Auto
+            gefahren.
+          </li>
+          <li>
+            Insgesamt <strong>{checkBoxes[3]}</strong> mal bist du mit dem
+            Flugzeug geflogen.
+          </li>
+          <li>
+            Insgesamt <strong>{checkBoxes[4]}</strong> mal hast du Fleisch
+            gegessen.
+          </li>
+          <li>
+            Insgesamt <strong>{checkBoxes[5]}</strong> milchprodukte hast du zu
+            dir genommen.
+          </li>
+          <li>
+            Insgesamt <strong>{checkBoxes[6]}</strong> mal hast du Pommes
+            gegessen.
+          </li>
+          <li>
+            Insgesamt <strong>{checkBoxes[7]}</strong> mal hast du Schokolade
+            gegessen.
+          </li>
+          <li>
+            Insgesamt <strong>{checkBoxes[8]}</strong> mal warst du shoppen.
+          </li>
+        </ul>
       </div>
     );
   }
@@ -130,7 +151,11 @@ class StatistikUebersicht extends React.Component {
 
   renderStreak() {
     const streak = this.state.eingaben.streak[0];
-    return <div>Dein Streak liegt bei {streak} Einträgen.</div>;
+    return (
+      <div className="display-6">
+        Dein Streak liegt bei <strong>{streak}</strong> Einträgen.
+      </div>
+    );
   }
 
   render() {
@@ -139,16 +164,17 @@ class StatistikUebersicht extends React.Component {
     if (isLoginTrue) {
       if (this.state.eingaben.length === 0) {
         return (
-          <div>
+          <div className="alert alert-warning" role="alert">
             Leider gibt es noch keine Daten, die ausgewertet werden können.
           </div>
         );
       } else {
         return (
-          <div>
+          <div className="container-fluid">
             <div>{this.renderOverallStats()}</div>
             <div>{this.renderNumberCheckboxes()}</div>
             <div>{this.renderStreak()}</div>
+            <div></div>
           </div>
         );
       }

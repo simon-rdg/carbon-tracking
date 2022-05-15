@@ -3,10 +3,10 @@
 import React from "react";
 import cn from "classnames";
 
-import section1Styles from "./Informationsseite_section1.module.scss";
-import section2Styles from "./Informationsseite_section2.module.scss";
-import section3Styles from "./Informationsseite_section3.module.scss";
-import styles from "./Informationsseite.module.scss";
+import section1Styles from "../../pxcode/Informationsseite_section1.module.scss";
+import section2Styles from "../../pxcode/Informationsseite_section2.module.scss";
+import section3Styles from "../../pxcode/Informationsseite_section3.module.scss";
+import styles from "../../pxcode/Informationsseite.module.scss";
 
 function renderSection1(props) {
   return (
@@ -78,7 +78,7 @@ function renderSection3(props) {
           <h1 className={cn(section3Styles.big_title_box)}>
             <pre className={cn(section3Styles.big_title)}>
               {
-                "Unsere Erde ist bedroht. Der menschengemachte Klimawandel bereitet uns große Probleme. Denn es geht nicht nur darum die Natur zu retten, sondern es geht darum UNS zu retten. Wir Menschen brauchen sauberes Wasser, Nahrung, Luft zum Atmen und erträgliche Außentemperaturen. All das ist gefährdet. \r\nAngesichts dieser riesigen Menschheitsaufgabe fühlen wir uns manchmal hilflos. Doch während die großen Hebel in der Politik gestellt werden müssen, können auch wir einen Unterschied machen. Du möchtest wissen, was du konkret zum Klimaschutz beitragen kannst?\r\nDer Carbon-Tracker ist ein Tool, mit dessen Hilfe Du die klimarelevantesten Handlungen in deinem Alltag tracken kannst. Wenn du regelmäßig das Formular ausfüllst, entwickelst Du in Deinem Alltag ein stärkeres Bewusstsein dafür, welchen Einfluss Deine Handlungen auf das Klima haben. Außerdem kannst du versuchen, Dein Verhalten über einen längeren Zeitraum zu verändern und damit dein Leben klimafreundlicher gestalten. \r\nTipp: Egal wie groß Dein Enthusiasmus ist; versuche nicht alles auf einmal zu verändern, sondern über einen langen Zeitraum nach und nach dein Verhalten anzupassen. Dann fällt es dir viel leichter.\r\nDiese Webapp ist im Zusammenhang mit dem Projekt „Erasmus+“ entstanden. Der Carbon-Tracker soll später einmal Teil einer größeren App werden, mit der europaweit Schulen ihren ökologischen Fußabdruck messen und im Anschluss daran arbeiten können, diesen zu verbessern.\r\n"
+                "Unsere Erde ist bedroht. Der menschengemachte Klimawandel bereitet uns große Probleme. Denn es geht nicht nur darum die Natur zu retten, sondern es geht darum UNS zu retten. Wir Menschen brauchen sauberes Wasser, Nahrung, Luft zum Atmen und erträgliche Außentemperaturen. All das ist gefährdet. \r\nAngesichts dieser riesigen Menschheitsaufgabe fühlen wir uns manchmal hilflos. Doch während die großen Hebel in der Politik gestellt werden müssen, können auch wir einen Unterschied machen. Du möchtest wissen, was Du konkret zum Klimaschutz beitragen kannst?\r\nDer Carbon-Tracker ist ein Tool, mit dessen Hilfe Du die klimarelevantesten Handlungen in deinem Alltag tracken kannst. Wenn du regelmäßig das Formular ausfüllst, entwickelst Du in Deinem Alltag ein stärkeres Bewusstsein dafür, welchen Einfluss Deine Handlungen auf das Klima haben. Außerdem kannst du versuchen, Dein Verhalten über einen längeren Zeitraum zu verändern und damit dein Leben klimafreundlicher gestalten. \r\nTipp: Egal wie groß Dein Enthusiasmus ist; versuche nicht alles auf einmal zu verändern, sondern über einen langen Zeitraum nach und nach Dein Verhalten anzupassen. Dann fällt es Dir viel leichter.\r Der Carbon-Tracker soll später einmal Teil einer größeren App werden, mit der europaweit Schulen ihren ökologischen Fußabdruck messen und im Anschluss daran arbeiten können, diesen zu verbessern.\r\n"
               }
             </pre>
           </h1>

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import Eingaben from "./components/Eingaben/Eingaben";
 import Formular from "./components/Eingaben/Formular";
 
-import Nachbearbeitung from "./components/Eingaben/Nachbearbeitung";
 import VergangeneEingaben from "./components/Eingaben/VergangeneEingaben";
 
 import Informationsuebersicht from "./components/Informationen/InformationsUebersicht";
@@ -49,11 +48,6 @@ function App() {
           <Route path="/vergangeneeingaben" component={VergangeneEingaben}>
             <NavBar logoutUser={logoutUser} setLogoutUser={setLogoutUser} />
             <VergangeneEingaben />
-          </Route>
-
-          <Route path="/eingaben/nachbearbeitung" component={Nachbearbeitung}>
-            <NavBar logoutUser={logoutUser} setLogoutUser={setLogoutUser} />
-            <Nachbearbeitung />
           </Route>
 
           <Route path="/informationen" exact component={Informationsuebersicht}>

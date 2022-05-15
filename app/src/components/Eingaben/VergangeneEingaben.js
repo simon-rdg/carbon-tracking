@@ -1,8 +1,6 @@
-import { jsx } from "@emotion/react";
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import Accordion from "react-bootstrap/Accordion";
-import { DateRangeOutlined } from "@mui/icons-material";
 
 class VergangeneEingaben extends React.Component {
   state = {
@@ -10,7 +8,6 @@ class VergangeneEingaben extends React.Component {
   };
 
   renderItemInput(date) {
-    // Codesample 2 (?)
     for (let i = 0; i < this.state.eingaben.entries.length; i++) {
       if (this.state.eingaben.entries[i].date === date) {
         return (

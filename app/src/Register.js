@@ -1,3 +1,5 @@
+// Dieser Code wurde von https://github.com/trickjsprogram/react-jwt-auth übernommen und leicht modifiziert.
+
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import axiox from "axios";
